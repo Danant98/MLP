@@ -1,2 +1,2 @@
 # MLP
-Implementation of a multi-layer perceptron with a specified number of neaurons in eahc of the layers. 
+Implementation of a multi-layer perceptron for a specified number of neurons and layers.
