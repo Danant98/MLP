@@ -17,5 +17,5 @@ class MLP:
     def OneHot(self):
         self.Y_onehot = np.zeros((self.Y.shape[0], self.labels.shape[0]))
         for i in range(self.Y.shape[0]):
-            self.Y_onehot[i, self.Y[i]] = 1
+            self.Y_onehot[i, self.Y[i] - 1] = 1
 
