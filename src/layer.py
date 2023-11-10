@@ -7,7 +7,7 @@ import numpy as np
 
 class dense:
 
-    def __init__(self, inpt_size:tuple, output_size:tuple):
+    def __init__(self, inpt_size:int, output_size:int):
         self.inpt = None
         self.output = None
         # Initializing weights and bias
