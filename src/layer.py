@@ -13,13 +13,20 @@ class dense:
         # Initializing weights and biases
         self.w = np.random.randn(output_size, inpt_size)
         self.b = np.random.randn(output_size, 1)
+
+    def activation(self, inpt:np.ndarray):
+        """
+        Sigmoid activation function
+        """
+        return 1 / (1 + np.exp(-inpt))
     
     def forward(self, inpt:np.ndarray):
         """
         Forward-propagation
         """
         self.inpt = inpt
-        return np.dot(self.w, self.inpt) + self.b
+        comp = np.dot(self.w, self.inpt) + self.b
+        return self.activation(comp)
 
 
     def backward(self, output_grad:np.ndarray, lr:float, momentum:float):
