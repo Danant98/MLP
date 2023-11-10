@@ -16,7 +16,7 @@ class MLP:
         self.X =  self.normalize(X.T)
         self.Y = Y.squeeze()
         # One Hot encoding input y labels
-        self.OneHot()
+        self.__OneHot()
         self.labels = np.unique(self.Y)
         # Setting learning rate, momentum and max number of epochs
         self.lr = lr
@@ -25,7 +25,7 @@ class MLP:
         # Size of each layer, that is the number of nodes in each layer
         self.layer_size = [X.shape[1]] + layer_size + [self.labels.shape[0]]
         # Set network
-        self.create_network()
+        self.__create_network()
         # Error array containing loss
         self.error = np.zeros(epochs)
     
@@ -35,7 +35,7 @@ class MLP:
         """
         return (X - np.mean(X, axis = 1)) / np.std(X, axis = 1)
 
-    def OneHot(self):
+    def __OneHot(self):
         """
         One Hot encoding the labels for cost function
         """
@@ -43,7 +43,7 @@ class MLP:
         for i in range(self.Y.shape[0]):
             self.Y_onehot[i, self.Y[i] - 1] = 1
     
-    def create_network(self):
+    def __create_network(self):
         """
         Creating the network based on inputed size with fixed input and output layer sizes
         """
