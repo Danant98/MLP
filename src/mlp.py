@@ -12,7 +12,7 @@ class MLP:
 
     def __init__(self, X:np.ndarray, Y:np.ndarray, layer_size:list, epochs:int = 100,
                  lr:float = 0.1, momentum:float = 0.5):
-        self.X = self.normalize(X)
+        self.X = self.normalize(X.T)
         self.Y = Y.squeeze()
         # One Hot encoding input y labels
         self.OneHot()
