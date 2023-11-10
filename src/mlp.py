@@ -12,7 +12,7 @@ class MLP:
 
     def __init__(self, X:np.ndarray, Y:np.ndarray, layer_size:list, epochs:int = 100,
                  lr:float = 0.1, momentum:float = 0.5):
-        self.X = X
+        self.X = self.normalize(X)
         self.Y = Y.squeeze()
         # One Hot encoding input y labels
         self.OneHot()
@@ -27,6 +27,12 @@ class MLP:
         self.create_network()
         # Error array containing loss
         self.error = np.zeros(epochs)
+    
+    def normalize(self, X:np.ndarray):
+        """
+        Normalize the features to N(0, 1)
+        """
+        return (X - np.mean(X, axis = 1)) / np.std(X, axis = 1)
 
     def OneHot(self):
         self.Y_onehot = np.zeros((self.Y.shape[0], self.labels.shape[0]))
