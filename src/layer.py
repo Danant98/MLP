@@ -10,9 +10,8 @@ class dense:
     def __init__(self, inpt_size:tuple, output_size:tuple):
         self.inpt = None
         self.output = None
-        # Initializing weights and biases
-        self.w = np.random.randn(output_size, inpt_size)
-        self.b = np.random.randn(output_size, 1)
+        # Initializing weights and bias
+        self.w = np.random.randn(inpt_size + 1, output_size)
 
     def activation(self, inpt:np.ndarray):
         """
@@ -24,10 +23,10 @@ class dense:
         """
         Forward-propagation
         """
-        self.inpt = inpt
-        comp = np.dot(self.w, self.inpt) + self.b
+        # Stack ones in the first column to account for bias
+        self.inpt = np.hstack(np.ones((inpt.shape[1], 1)), inpt)
+        comp = np.dot(self.w, self.inpt)
         return self.activation(comp)
-
 
     def backward(self, output_grad:np.ndarray, lr:float, momentum:float):
         """
@@ -35,12 +34,8 @@ class dense:
         """
         # Computing the gradient for the weights
         w_grad = np.dot(output_grad, self.inpt.T)
-        inpt_grad = np.dot(self.w.T, output_grad)
-
         # Updating weights and biases
         self.w += momentum * self.w - lr * w_grad
-        self.b += momentum * self.b - lr * inpt_grad
-
 
 
 
