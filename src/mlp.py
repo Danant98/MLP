@@ -45,7 +45,7 @@ class MLP:
     
     def create_network(self):
         """
-        Creating the network based on inputed size with fixed input and output sizes
+        Creating the network based on inputed size with fixed input and output layer sizes
         """
         self.layers = []
         for i in range(len(self.layer_size - 1)):
