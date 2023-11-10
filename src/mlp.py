@@ -26,7 +26,7 @@ class MLP:
         self.layer_size = [X.shape[1]] + layer_size + [self.labels.shape[0]]
         # Set network
         self.__create_network()
-        # Error array containing loss
+        # Error array containing cost function
         self.error = np.zeros(epochs)
     
     def normalize(self, X:np.ndarray):
