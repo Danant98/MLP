@@ -28,12 +28,12 @@ class dense:
         comp = np.dot(self.w, self.inpt)
         return self.activation(comp)
 
-    def backward(self, output_grad:np.ndarray, lr:float, momentum:float):
+    def backward(self, inpt:np.ndarray, output_grad:np.ndarray, lr:float, momentum:float):
         """
         Back-propagation using gradient decsent with momentum
         """
         # Computing the gradient for the weights
-        w_grad = np.dot(output_grad, self.inpt.T)
+        w_grad = np.dot(output_grad, inpt.T)
         # Updating weights and biases
         self.w += momentum * self.w - lr * w_grad
 
