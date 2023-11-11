@@ -30,7 +30,7 @@ class dense:
 
     def backward(self, inpt:np.ndarray, output_grad:np.ndarray, lr:float, momentum:float):
         """
-        Back-propagation using gradient decsent with momentum
+        Back-propagation using gradient descent with momentum
         """
         # Computing the gradient for the weights
         w_grad = np.dot(output_grad, inpt.T)

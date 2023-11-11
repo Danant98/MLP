@@ -60,6 +60,9 @@ class MLP:
         for e in range(self.epochs):
             pass
 
-    def predict(self):
+    def predict(self, X:np.ndarray):
+        """
+        Predicting labels for each input vector
+        """
         pass
 
