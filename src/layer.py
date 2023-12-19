@@ -26,16 +26,17 @@ class dense:
         # Stack ones in the first column to account for bias
         self.inpt = np.hstack(np.ones((inpt.shape[1], 1)), inpt)
         comp = np.dot(self.w, self.inpt)
-        return self.activation(comp)
+        self.output = self.activation(comp)
+        return self.output
 
-    def backward(self, inpt:np.ndarray, output_grad:np.ndarray, lr:float, momentum:float):
+    def backward(self, old_layer_delta:np.ndarray, layer_delta:np.ndarray, lr:float, momentum:float):
         """
         Back-propagation using gradient descent with momentum
         """
         # Computing the gradient for the weights
-        w_grad = np.dot(output_grad, inpt.T)
+        w_grad = np.dot()
         # Updating weights and biases
-        self.w += momentum * self.w - lr * w_grad
+        self.w += momentum * old_layer_delta - lr * w_grad
 
 
 

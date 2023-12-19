@@ -12,6 +12,8 @@ class MLP:
 
     def __init__(self, X:np.ndarray, Y:np.ndarray, layer_size:list, epochs:int = 100,
                  lr:float = 0.1, momentum:float = 0.5):
+        # Setting seed
+        np.random.seed(0)
         # Adding ones in the first column to account for bias
         self.X =  self.__normalize(X)
         self.Y = Y.squeeze()
@@ -35,7 +37,6 @@ class MLP:
         """
         return (X - np.mean(X, axis = 1)) / np.std(X, axis = 1)
 
-    @staticmethod
     def __OneHot(self):
         """
         One Hot encoding the labels for cost function
@@ -44,7 +45,6 @@ class MLP:
         for i in range(self.Y.shape[0]):
             self.Y_onehot[i, self.Y[i] - 1] = 1
     
-    @staticmethod
     def __create_network(self):
         """
         Creating the network based on inputed size with fixed input and output layer sizes

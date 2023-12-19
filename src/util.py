@@ -50,6 +50,6 @@ def misslabeled(conf_mat:np.ndarray, label:str = None):
 
 
 if __name__ == '__main__':
-    pass 
+    pass
 
 
